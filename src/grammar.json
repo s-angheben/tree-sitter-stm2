@@ -22,8 +22,28 @@
         {
           "type": "SYMBOL",
           "name": "commands"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "comment"
         }
       ]
+    },
+    "comment": {
+      "type": "TOKEN",
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "STRING",
+            "value": ";"
+          },
+          {
+            "type": "PATTERN",
+            "value": ".*"
+          }
+        ]
+      }
     },
     "commands": {
       "type": "CHOICE",
@@ -253,6 +273,10 @@
     }
   },
   "extras": [
+    {
+      "type": "SYMBOL",
+      "name": "comment"
+    },
     {
       "type": "PATTERN",
       "value": "\\s"

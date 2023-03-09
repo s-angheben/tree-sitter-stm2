@@ -1,13 +1,23 @@
 module.exports = grammar({
   name: 'smt2',
 
+  extras: $ => [
+    $.comment,
+    /\s/
+  ],
+
   rules: {
     source_file: $ => repeat($._specification),
 
       _specification: $ => choice(
           $.declaration,
           $.assertion,
-          $.commands
+          $.commands,
+          $.comment
+      ),
+
+      comment: $ => token(
+          seq(';', /.*/)
       ),
 
       commands: $ => choice(

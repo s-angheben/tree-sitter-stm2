@@ -70,6 +70,10 @@
           "named": true
         },
         {
+          "type": "comment",
+          "named": true
+        },
+        {
           "type": "declaration",
           "named": true
         }
@@ -103,6 +107,10 @@
   {
     "type": "check-sat",
     "named": false
+  },
+  {
+    "type": "comment",
+    "named": true
   },
   {
     "type": "declare-const",
