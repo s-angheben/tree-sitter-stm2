@@ -1,0 +1,40 @@
+(declare-const P11 Bool)
+(declare-const P12 Bool)
+(declare-const P13 Bool)
+(declare-const P14 Bool)
+
+(declare-const P21 Bool)
+(declare-const P22 Bool)
+(declare-const P23 Bool)
+(declare-const P24 Bool)
+
+(assert (or (and P11 (not P22) (not P21) (not P12))
+            (and P22 (not P11) (not P21) (not P12))))
+
+(assert (not P11))
+(assert (not P21))
+(assert (not P24))
+(assert (not P14))
+
+(assert (or (and P24 (not P23) (not P13))
+            (and P13 (not P24) (not P14))))
+
+(assert (or P11 P12 P13 P14))
+(assert (=> P11 (and (not P12) (not P13) (not P14))))
+(assert (=> P12 (and (not P11) (not P13) (not P14))))
+(assert (=> P13 (and (not P12) (not P11) (not P14))))
+(assert (=> P14 (and (not P12) (not P13) (not P11))))
+
+(assert (or P21 P22 P23 P24))
+(assert (=> P21 (and (not P22) (not P23) (not P24))))
+(assert (=> P22 (and (not P21) (not P23) (not P24))))
+(assert (=> P23 (and (not P22) (not P21) (not P24))))
+(assert (=> P24 (and (not P22) (not P23) (not P21))))
+
+
+(assert (not (and P13 P22)))
+
+(check-sat)
+(get-model)
+(exit)
+

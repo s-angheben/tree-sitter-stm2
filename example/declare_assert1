@@ -1,0 +1,3 @@
+(declare-const P11 Bool)
+
+(assert P11)
