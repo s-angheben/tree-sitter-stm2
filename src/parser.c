@@ -12,9 +12,9 @@
 #define ALIAS_COUNT 0
 #define TOKEN_COUNT 15
 #define EXTERNAL_TOKEN_COUNT 0
-#define FIELD_COUNT 0
+#define FIELD_COUNT 3
 #define MAX_ALIAS_SEQUENCE_LENGTH 5
-#define PRODUCTION_ID_COUNT 1
+#define PRODUCTION_ID_COUNT 3
 
 enum {
   sym_comment = 1,
@@ -193,6 +193,32 @@ static const TSSymbolMetadata ts_symbol_metadata[] = {
     .visible = false,
     .named = false,
   },
+};
+
+enum {
+  field_name = 1,
+  field_statement = 2,
+  field_type = 3,
+};
+
+static const char * const ts_field_names[] = {
+  [0] = NULL,
+  [field_name] = "name",
+  [field_statement] = "statement",
+  [field_type] = "type",
+};
+
+static const TSFieldMapSlice ts_field_map_slices[PRODUCTION_ID_COUNT] = {
+  [1] = {.index = 0, .length = 1},
+  [2] = {.index = 1, .length = 2},
+};
+
+static const TSFieldMapEntry ts_field_map_entries[] = {
+  [0] =
+    {field_statement, 2},
+  [1] =
+    {field_name, 2},
+    {field_type, 3},
 };
 
 static const TSSymbol ts_alias_sequences[PRODUCTION_ID_COUNT][MAX_ALIAS_SEQUENCE_LENGTH] = {
@@ -783,8 +809,8 @@ static const TSParseActionEntry ts_parse_actions[] = {
   [53] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_logical_exp, 5),
   [55] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_commands, 3),
   [57] = {.entry = {.count = 1, .reusable = true}}, SHIFT(22),
-  [59] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_assertion, 4),
-  [61] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_declaration, 5),
+  [59] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_assertion, 4, .production_id = 1),
+  [61] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_declaration, 5, .production_id = 2),
   [63] = {.entry = {.count = 1, .reusable = true}}, SHIFT(19),
   [65] = {.entry = {.count = 1, .reusable = true}}, SHIFT(20),
   [67] = {.entry = {.count = 1, .reusable = true}}, SHIFT(14),
@@ -817,6 +843,9 @@ extern const TSLanguage *tree_sitter_smt2(void) {
     .small_parse_table_map = ts_small_parse_table_map,
     .parse_actions = ts_parse_actions,
     .symbol_names = ts_symbol_names,
+    .field_names = ts_field_names,
+    .field_map_slices = ts_field_map_slices,
+    .field_map_entries = ts_field_map_entries,
     .symbol_metadata = ts_symbol_metadata,
     .public_symbol_map = ts_symbol_map,
     .alias_map = ts_non_terminal_alias_map,

@@ -113,8 +113,12 @@
           "value": "assert"
         },
         {
-          "type": "SYMBOL",
-          "name": "logical_exp"
+          "type": "FIELD",
+          "name": "statement",
+          "content": {
+            "type": "SYMBOL",
+            "name": "logical_exp"
+          }
         },
         {
           "type": "STRING",
@@ -245,12 +249,20 @@
           "value": "declare-const"
         },
         {
-          "type": "SYMBOL",
-          "name": "identifier"
+          "type": "FIELD",
+          "name": "name",
+          "content": {
+            "type": "SYMBOL",
+            "name": "identifier"
+          }
         },
         {
-          "type": "SYMBOL",
-          "name": "_type"
+          "type": "FIELD",
+          "name": "type",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_type"
+          }
         },
         {
           "type": "STRING",
