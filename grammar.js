@@ -29,7 +29,7 @@ module.exports = grammar({
       assertion: $ => seq(
           '(',
           'assert',
-          $.logical_exp,
+          field('statement', $.logical_exp),
           ')'
       ),
 
@@ -44,8 +44,8 @@ module.exports = grammar({
       declaration: $ => seq(
           '(',
           'declare-const',
-          $.identifier,
-          $._type,
+          field('name', $.identifier),
+          field('type', $._type),
           ')'
       ),
 
