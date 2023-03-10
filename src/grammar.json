@@ -141,8 +141,12 @@
               "value": "("
             },
             {
-              "type": "STRING",
-              "value": "not"
+              "type": "FIELD",
+              "name": "operator",
+              "content": {
+                "type": "STRING",
+                "value": "not"
+              }
             },
             {
               "type": "SYMBOL",
@@ -162,8 +166,12 @@
               "value": "("
             },
             {
-              "type": "STRING",
-              "value": "or"
+              "type": "FIELD",
+              "name": "operator",
+              "content": {
+                "type": "STRING",
+                "value": "or"
+              }
             },
             {
               "type": "SYMBOL",
@@ -190,8 +198,12 @@
               "value": "("
             },
             {
-              "type": "STRING",
-              "value": "and"
+              "type": "FIELD",
+              "name": "operator",
+              "content": {
+                "type": "STRING",
+                "value": "and"
+              }
             },
             {
               "type": "SYMBOL",
@@ -218,8 +230,12 @@
               "value": "("
             },
             {
-              "type": "STRING",
-              "value": "=>"
+              "type": "FIELD",
+              "name": "operator",
+              "content": {
+                "type": "STRING",
+                "value": "=>"
+              }
             },
             {
               "type": "SYMBOL",
