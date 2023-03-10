@@ -35,6 +35,7 @@ module.exports = grammar({
 
       logical_exp: $ => choice(
           $.identifier,
+          seq('(', $.logical_exp, ')'),
           seq('(', field('operator', 'not'), $.logical_exp, ')'),
           seq('(', field('operator', 'or'), $.logical_exp, repeat1($.logical_exp), ')'),
           seq('(', field('operator', 'and'), $.logical_exp, repeat1($.logical_exp), ')'),
